@@ -3,69 +3,111 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#111111">
 <title>The Jose Garcia Chronicles</title>
+
 <style>
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   background: #eee;
   color: #181818;
   font-family: Georgia, serif;
-  transition: background 0.25s, color 0.25s;
+  transition: background .25s, color .25s;
 }
+
 body.dark-mode {
   background: #141414;
-  color: #eaeaea;
+  color: #eee;
 }
+
 header {
   background: #111;
   color: white;
-  padding: 22px 16px 14px;
+  padding: 28px 16px 18px;
   text-align: center;
   border-bottom: 5px solid #c00;
 }
-header h1 { margin: 0; font-size: clamp(28px, 5vw, 48px); }
-header span { color: #e22; }
-.tagline {
-  margin: 6px 0 14px;
-  letter-spacing: 1.5px;
-  font-size: 13px;
-  color: #ccc;
+
+header h1 {
+  margin: 0;
+  font-size: clamp(28px, 5vw, 52px);
 }
+
+header h1 span {
+  color: #e22;
+}
+
+.tagline {
+  color: #bbb;
+  letter-spacing: 2px;
+  font-size: 12px;
+  margin: 9px 0 18px;
+}
+
 .masthead-bar {
   max-width: 1100px;
-  margin: 0 auto;
-  padding-top: 10px;
-  border-top: 1px solid #333;
+  margin: auto;
+  padding-top: 12px;
+  border-top: 1px solid #444;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 8px;
-  font-size: 13px;
+  font-size: 12px;
   color: #bbb;
 }
+
 nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
   background: #222;
+  padding: 13px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 16px;
-  padding: 12px 16px;
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  gap: 18px;
 }
-nav a { color: white; text-decoration: none; font-weight: bold; font-size: 15px; }
-nav a:hover { color: #f44; }
-.nav-btn {
-  background: #333;
-  border: 1px solid #555;
-  padding: 6px 12px;
-  font-size: 13px;
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
 }
-.nav-btn:hover { background: #444; }
+
+nav a:hover {
+  color: #f44;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: #b00;
+  color: white;
+  padding: 10px 15px;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+button:hover {
+  background: #700;
+}
+
+.theme-button {
+  background: #444;
+  border: 1px solid #666;
+}
+
 main {
   max-width: 1100px;
   margin: auto;
@@ -74,223 +116,671 @@ main {
   flex-direction: column;
   gap: 20px;
 }
+
 .breaking {
   background: #b00;
   color: white;
-  padding: 12px 16px;
-  font-weight: bold;
+  padding: 13px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
   flex-wrap: wrap;
+  gap: 10px;
+  font-weight: bold;
 }
+
 .breaking button {
   background: #111;
-  font-size: 13px;
-  padding: 6px 12px;
+  padding: 6px 10px;
 }
-.breaking button:hover { background: #333; }
-.hero, .card {
+
+.hero,
+.card,
+.section-box {
   background: white;
   padding: 22px;
   border: 1px solid #ccc;
-  transition: background 0.25s, border-color 0.25s;
+  transition: background .25s;
 }
+
 body.dark-mode .hero,
 body.dark-mode .card,
-body.dark-mode .modal-box {
+body.dark-mode .section-box {
   background: #202020;
-  border-color: #3a3a3a;
+  border-color: #444;
 }
-.byline {
-  font-size: 13px;
-  color: #666;
-  margin: 6px 0 14px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #e5e5e5;
+
+.hero {
+  border-top: 5px solid #b00;
 }
-body.dark-mode .byline {
-  color: #aaa;
-  border-color: #383838;
-}
-.portrait-frame {
-  width: 100%;
-  margin: 12px 0 6px;
-  border: 1px solid #bbb;
-  background: #1c222b;
-  overflow: hidden;
-}
-.portrait-frame svg {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 360px;
-}
-.img-caption {
-  font-size: 13px;
-  font-style: italic;
-  color: #555;
-  margin: 0 0 14px;
-}
-body.dark-mode .img-caption { color: #aaa; }
+
 .dateline {
-  font-weight: bold;
+  font-size: 12px;
   text-transform: uppercase;
-  font-size: 14px;
-}
-h2 { color: #a00; margin-top: 0; }
-body.dark-mode h2 { color: #ff5555; }
-h3 { margin: 0 0 6px; }
-.stat {
-  font-size: clamp(24px, 4vw, 36px);
   font-weight: bold;
-  margin: 10px 0;
+  color: #b00;
+  letter-spacing: 1px;
 }
+
+h2 {
+  color: #a00;
+  margin-top: 0;
+}
+
+body.dark-mode h2 {
+  color: #ff5555;
+}
+
+.hero h2 {
+  font-size: clamp(25px, 4vw, 38px);
+  margin: 12px 0;
+}
+
+.byline,
+.card-meta {
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 12px;
+}
+
+body.dark-mode .byline,
+body.dark-mode .card-meta {
+  color: #aaa;
+}
+
+.hero-image {
+  width: 100%;
+  min-height: 200px;
+  max-height: 360px;
+  background:
+    linear-gradient(135deg, #111, #500, #b00);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: clamp(22px, 5vw, 42px);
+  font-weight: bold;
+  text-align: center;
+  padding: 20px;
+  margin: 15px 0;
+  letter-spacing: 3px;
+}
+
+.hero-image span {
+  color: #ff5555;
+}
+
+.hero p,
+.card p {
+  line-height: 1.7;
+}
+
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 15px;
 }
+
 .card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border-top: 3px solid #b00;
 }
-.card-meta {
-  font-size: 12px;
-  color: #777;
-  margin-bottom: 8px;
+
+.card h3 {
+  margin-top: 5px;
 }
-body.dark-mode .card-meta { color: #aaa; }
-.btn-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 12px;
+
+.card p {
+  line-height: 1.6;
 }
-button {
-  display: inline-block;
-  background: #b00;
-  color: white;
-  padding: 10px 16px;
-  border: 0;
-  font-family: inherit;
-  font-size: 15px;
-  cursor: pointer;
-}
-button:hover { background: #700; }
-button.secondary { background: #444; }
-button.secondary:hover { background: #222; }
-button.small-btn {
-  padding: 6px 10px;
-  font-size: 13px;
-}
-.specs-table {
-  width: 100%;
-  border-collapse: collapse;
+
+.card button {
+  align-self: flex-start;
   margin-top: 10px;
 }
-.specs-table th, .specs-table td {
-  text-align: left;
-  padding: 10px 12px;
-  border-bottom: 1px solid #ddd;
+
+.section-title {
+  border-bottom: 2px solid #b00;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
 }
-body.dark-mode .specs-table th,
-body.dark-mode .specs-table td {
-  border-color: #3a3a3a;
-}
-.specs-table th {
-  width: 34%;
-  color: #a00;
-  background: #f9f9f9;
-}
-body.dark-mode .specs-table th {
-  color: #ff6666;
-  background: #282828;
-}
-.timeline {
-  border-left: 3px solid #c00;
-  padding-left: 18px;
-  margin: 12px 0 4px 6px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.timeline-item { position: relative; }
-.timeline-time {
-  font-size: 12px;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #b00;
-  margin-bottom: 3px;
-}
-body.dark-mode .timeline-time { color: #ff6666; }
-.guide-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 14px;
-  margin-top: 10px;
-}
-.guide-box {
-  background: #f7f7f7;
-  border-left: 4px solid #b00;
-  padding: 14px;
-}
-body.dark-mode .guide-box { background: #292929; }
-.meter {
-  height: 22px;
-  background: #ddd;
-  border-radius: 10px;
-  overflow: hidden;
-  margin: 10px 0;
-}
-body.dark-mode .meter { background: #333; }
-.meter div {
-  width: 99.9%;
-  height: 100%;
-  background: #c00;
-  transition: width 0.35s ease, background 0.35s ease;
-}
-.slider-wrap { margin: 14px 0 6px; }
-.slider-wrap input[type="range"] {
-  width: 100%;
-  padding: 0;
-  margin: 6px 0;
-  cursor: pointer;
-}
-input[type="text"], textarea, select {
-  width: 100%;
-  padding: 12px;
-  margin: 8px 0;
-  font-family: inherit;
-  border: 1px solid #bbb;
-  background: white;
-  color: #181818;
-}
-body.dark-mode input[type="text"],
-body.dark-mode textarea,
-body.dark-mode select {
-  background: #2b2b2b;
-  color: #f0f0f0;
-  border-color: #555;
-}
-.alert-row {
+
+.search-area {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-  align-items: center;
+  margin-bottom: 16px;
 }
-.alert-row input {
-  flex: 1 1 240px;
-  margin: 0;
+
+.search-area input,
+.search-area select {
+  flex: 1 1 180px;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #aaa;
+  font-family: inherit;
+  background: white;
+  color: #181818;
 }
-.status-msg {
-  font-size: 14px;
-  margin: 8px 0 0;
-  font-weight: bold;
+
+body.dark-mode .search-area input,
+body.dark-mode .search-area select {
+  background: #292929;
+  color: white;
+  border-color: #555;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.stat {
+  background: #222;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 4px solid #b00;
+}
+
+.stat strong {
+  display: block;
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+
+.timeline {
+  border-left: 3px solid #b00;
+  margin-left: 8px;
+  padding-left: 20px;
+}
+
+.timeline-item {
+  margin-bottom: 20px;
+}
+
+.timeline-item strong {
+  color: #b00;
+}
+
+body.dark-mode .timeline-item strong {
+  color: #ff6666;
+}
+
+.modal {
   display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0,0,0,.8);
+  padding: 20px;
+  overflow-y: auto;
+  align-items: center;
+  justify-content: center;
 }
-.status-msg.su
+
+.modal.open {
+  display: flex;
+}
+
+.modal-box {
+  width: 100%;
+  max-width: 650px;
+  background: white;
+  color: #181818;
+  padding: 25px;
+  position: relative;
+  border-top: 5px solid #b00;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+.close-modal {
+  float: right;
+  background: #222;
+}
+
+footer {
+  background: #111;
+  color: #bbb;
+  text-align: center;
+  padding: 30px 15px;
+  border-top: 5px solid #b00;
+  line-height: 1.8;
+}
+
+footer strong {
+  color: white;
+}
+
+@media(max-width: 600px) {
+  nav {
+    gap: 12px;
+  }
+
+  nav a {
+    font-size: 12px;
+  }
+
+  main {
+    padding: 12px;
+  }
+
+  .hero,
+  .card,
+  .section-box {
+    padding: 17px;
+  }
+
+  .masthead-bar {
+    justify-content: center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>THE JOSE <span>GARCIA</span> CHRONICLES</h1>
+  <p class="tagline">THE STORY NEVER STOPS</p>
+
+  <div class="masthead-bar">
+    <span>INDEPENDENT NEWS & STORIES</span>
+    <span id="today">Loading date...</span>
+    <span>EST. 2026</span>
+  </div>
+</header>
+
+<nav>
+  <a href="#home">HOME</a>
+  <a href="#latest">LATEST</a>
+  <a href="#investigations">INVESTIGATIONS</a>
+  <a href="#timeline">TIMELINE</a>
+  <a href="#about">ABOUT</a>
+  <button class="theme-button" id="themeButton">🌙 Dark Mode</button>
+</nav>
+
+<main id="home">
+
+  <section class="breaking" id="breaking">
+    <span>🔴 BREAKING: Welcome to The Jose Garcia Chronicles!</span>
+    <button id="dismissBreaking">Dismiss</button>
+  </section>
+
+  <section class="hero">
+    <div class="dateline">SPECIAL EDITION · FEATURED STORY</div>
+
+    <h2>Welcome to The Jose Garcia Chronicles</h2>
+
+    <div class="byline">
+      By The Chronicles Editorial Team · November 21, 2026
+    </div>
+
+    <div class="hero-image">
+      THE <span>CHRONICLES</span>
+    </div>
+
+    <p>
+      Welcome to The Jose Garcia Chronicles, an independent
+      digital newspaper dedicated to stories, events,
+      investigations, and everything worth documenting.
+    </p>
+
+    <p>
+      Explore the latest headlines, discover featured stories,
+      and follow the timeline of the Chronicles.
+    </p>
+
+    <button id="featuredButton">Read Featured Story →</button>
+  </section>
+
+  <section id="latest" class="section-box">
+    <h2 class="section-title">Latest Headlines</h2>
+
+    <div class="search-area">
+      <input
+        type="search"
+        id="searchInput"
+        placeholder="Search articles..."
+        aria-label="Search articles"
+      >
+
+      <select id="categoryFilter" aria-label="Filter by category">
+        <option value="all">All Categories</option>
+        <option value="News">News</option>
+        <option value="Investigation">Investigation</option>
+        <option value="Editorial">Editorial</option>
+      </select>
+    </div>
+
+    <div class="cards" id="articleContainer">
+
+      <article class="card" data-category="News">
+        <div>
+          <div class="card-meta">NEWS · SPECIAL REPORT</div>
+          <h3>The Chronicles Begin</h3>
+          <p>
+            A new chapter begins as The Jose Garcia Chronicles
+            introduces its digital newspaper.
+          </p>
+        </div>
+        <button data-article="0">Read Article →</button>
+      </article>
+
+      <article class="card" data-category="Investigation">
+        <div>
+          <div class="card-meta">INVESTIGATION · FEATURE</div>
+          <h3>Behind the Headlines</h3>
+          <p>
+            A closer look at how stories are collected,
+            documented, and presented.
+          </p>
+        </div>
+        <button data-article="1">Read Article →</button>
+      </article>
+
+      <article class="card" data-category="Editorial">
+        <div>
+          <div class="card-meta">EDITORIAL · OPINION</div>
+          <h3>The Power of Information</h3>
+          <p>
+            Why documenting events and sharing information
+            matters in the digital age.
+          </p>
+        </div>
+        <button data-article="2">Read Article →</button>
+      </article>
+
+    </div>
+
+    <p id="noResults" hidden>No articles match your search.</p>
+  </section>
+
+  <section id="investigations" class="section-box">
+    <h2 class="section-title">Investigations & Reports</h2>
+
+    <p>
+      The Chronicles is designed to document stories,
+      explore questions, and organize information.
+    </p>
+
+    <div class="guide-grid">
+      <div class="card">
+        <h3>01 · Research</h3>
+        <p>Collect information and examine the available evidence.</p>
+      </div>
+
+      <div class="card">
+        <h3>02 · Documentation</h3>
+        <p>Keep track of important developments and details.</p>
+      </div>
+
+      <div class="card">
+        <h3>03 · Reporting</h3>
+        <p>Present stories in a clear and understandable format.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-box">
+    <h2 class="section-title">Chronicles Statistics</h2>
+
+    <div class="stats">
+      <div class="stat">
+        <strong id="articleCount">3</strong>
+        Published Stories
+      </div>
+
+      <div class="stat">
+        <strong>2026</strong>
+        Established
+      </div>
+
+      <div class="stat">
+        <strong>24/7</strong>
+        Digital Access
+      </div>
+    </div>
+  </section>
+
+  <section id="timeline" class="section-box">
+    <h2 class="section-title">Our Timeline</h2>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <strong>November 2026</strong>
+        <p>The digital Chronicles website launches.</p>
+      </div>
+
+      <div class="timeline-item">
+        <strong>November 2026</strong>
+        <p>The first featured stories are published.</p>
+      </div>
+
+      <div class="timeline-item">
+        <strong>The Future</strong>
+        <p>More chapters, stories, and developments to come.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section-box">
+    <h2 class="section-title">About The Chronicles</h2>
+
+    <p>
+      The Jose Garcia Chronicles is a digital newspaper project
+      created to bring together stories, articles, reports,
+      and information in one place.
+    </p>
+
+    <p>
+      This website is a growing project. New content and
+      improvements can be added as the Chronicles develops.
+    </p>
+
+    <button id="shareButton">Share This Website ↗</button>
+  </section>
+
+</main>
+
+<footer>
+  <strong>THE JOSE GARCIA CHRONICLES</strong>
+  <br>
+  The Story Never Stops.
+  <br>
+  © 2026 The Jose Garcia Chronicles
+  <br>
+  <small>Independent digital newspaper project.</small>
+</footer>
+
+<div class="modal" id="articleModal" role="dialog"
+     aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-box">
+    <button class="close-modal" id="closeModal">✕ Close</button>
+
+    <div class="dateline">THE JOSE GARCIA CHRONICLES</div>
+    <h2 id="modalTitle"></h2>
+    <div class="byline" id="modalMeta"></div>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+
+const articles = [
+  {
+    title: "The Chronicles Begin",
+    category: "News",
+    content: `
+      <p>A new chapter begins with The Jose Garcia Chronicles.</p>
+      <p>This digital newspaper provides a home for stories,
+      information, and future reports.</p>
+      <p>Readers can explore the different sections and follow
+      the development of the project as new material is added.</p>
+    `
+  },
+  {
+    title: "Behind the Headlines",
+    category: "Investigation",
+    content: `
+      <p>Every story begins with a question.</p>
+      <p>Research, documentation, and careful examination
+      help organize information into meaningful reports.</p>
+      <p>The goal is to make complicated information easier
+      to understand.</p>
+    `
+  },
+  {
+    title: "The Power of Information",
+    category: "Editorial",
+    content: `
+      <p>Information plays an important role in how people
+      understand the world around them.</p>
+      <p>Documenting events creates a record that can be
+      revisited and examined later.</p>
+      <p>The Chronicles aims to make that process accessible.</p>
+    `
+  }
+];
+
+const modal = document.getElementById("articleModal");
+
+function openArticle(index) {
+  const article = articles[index];
+
+  if (!article) return;
+
+  document.getElementById("modalTitle").textContent = article.title;
+  document.getElementById("modalMeta").textContent =
+    article.category + " · THE CHRONICLES";
+
+  document.getElementById("modalContent").innerHTML =
+    article.content;
+
+  modal.classList.add("open");
+  document.getElementById("closeModal").focus();
+}
+
+function closeArticle() {
+  modal.classList.remove("open");
+}
+
+document.querySelectorAll("[data-article]").forEach(button => {
+  button.addEventListener("click", () => {
+    openArticle(Number(button.dataset.article));
+  });
+});
+
+document.getElementById("featuredButton").addEventListener("click", () => {
+  openArticle(0);
+});
+
+document.getElementById("closeModal").addEventListener("click", closeArticle);
+
+modal.addEventListener("click", event => {
+  if (event.target === modal) closeArticle();
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closeArticle();
+});
+
+// Dark mode
+const themeButton = document.getElementById("themeButton");
+
+function setTheme(dark) {
+  document.body.classList.toggle("dark-mode", dark);
+  themeButton.textContent = dark ? "☀️ Light Mode" : "🌙 Dark Mode";
+
+  try {
+    localStorage.setItem("chronicles-theme", dark ? "dark" : "light");
+  } catch (error) {
+    // Theme still works if browser storage is unavailable.
+  }
+}
+
+let savedTheme = "light";
+
+try {
+  savedTheme = localStorage.getItem("chronicles-theme") || "light";
+} catch (error) {}
+
+setTheme(savedTheme === "dark");
+
+themeButton.addEventListener("click", () => {
+  setTheme(!document.body.classList.contains("dark-mode"));
+});
+
+// Breaking news dismiss button
+document.getElementById("dismissBreaking").addEventListener("click", () => {
+  document.getElementById("breaking").remove();
+});
+
+// Search and category filter
+const searchInput = document.getElementById("searchInput");
+const categoryFilter = document.getElementById("categoryFilter");
+const cards = [...document.querySelectorAll(".card[data-category]")];
+
+function filterArticles() {
+  const search = searchInput.value.toLowerCase().trim();
+  const category = categoryFilter.value;
+
+  let visible = 0;
+
+  cards.forEach(card => {
+    const matchesText = card.textContent.toLowerCase().includes(search);
+    const matchesCategory =
+      category === "all" || card.dataset.category === category;
+
+    const show = matchesText && matchesCategory;
+
+    card.hidden = !show;
+
+    if (show) visible++;
+  });
+
+  document.getElementById("noResults").hidden = visible !== 0;
+}
+
+searchInput.addEventListener("input", filterArticles);
+categoryFilter.addEventListener("change", filterArticles);
+
+// Date
+document.getElementById("today").textContent =
+  new Intl.DateTimeFormat("en-US", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    year: "numeric"
+  }).format(new Date());
+
+// Share website
+document.getElementById("shareButton").addEventListener("click", async () => {
+  const shareData = {
+    title: "The Jose Garcia Chronicles",
+    text: "Check out The Jose Garcia Chronicles!",
+    url: window.location.href
+  };
+
+  try {
+    if (navigator.share) {
+      await navigator.share(shareData);
+    } else if (navigator.clipboard) {
+      await navigator.clipboard.writeText(window.location.href);
+      alert("Website link copied!");
+    } else {
+      alert("Copy your website address from your browser.");
+    }
+  } catch (error) {
+    if (error.name !== "AbortError") {
+      alert("Unable to share automatically. Copy the website address instead.");
+    }
+  }
+});
+</script>
+
 </body>
-  </html>
+</html>
