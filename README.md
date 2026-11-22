@@ -1,1 +1,1 @@
-# jose-garcia
+# The Jose Garcia Chronicles
